@@ -25,29 +25,28 @@ Office hours: T/Th 1–3 pm, via Zoom (see Courselore for link)
 
 Head CAs:
 
-* Lisa Hou <qhou4@jhu.edu>
-* Kuleen Sasse <ksasse1@jhu.edu>
+* Ishan Hemmige <ihemmig1@jhu.edu>
+* Owen Reed <oreed2@jhu.edu>
 
 CAs:
 
-* Nian Gao <ngao6@jhu.edu>
-* Owen Reed <oreed2@jhu.edu>
-* Rena Bi <rbi4@jhu.edu>
+* Gavi Kigner <gkigner1@jh.edu>
+* Sofia Floody <sfloody1@jhu.edu>
+* Moe Frumkin <mfrumki1@jhu.edu>
 * Nicolas Liu <nliu22@jhu.edu>
-* David Hla <dhla2@jhu.edu>
-* Sanne Wu <swu108@jhu.edu>
-* Yash Permalla <ypermal1@jhu.edu>
-* Daniel Jin <djin4@jhu.edu>
 * Alisa Yang <yyang221@jhu.edu>
-* Ishan Hemmige <ihemmig1@jhu.edu>
-
-*TBA*
+* Rida Danish <rdanish2@jhu.edu>
+* Emma Dionne <edionne2@jhu.edu>
+* Patrick Li <pli50@jhu.edu>
+* Oriel Savir <osavir1@jhu.edu>
 
 ## Meeting
 
 Class meetings are in-person:
 
-Section 01: MWF 10:00–10:50 am, Maryland 110
+Section 01: MWF 9:00–9:50 am, Hackerman B-17
+
+Section 02: MWF 10:00–10:50 am, Hackerman B-17
 
 ## Textbook
 
@@ -58,7 +57,7 @@ Optional: [Computer Organization and Design (MIPS edition)](https://www.elsevier
 ## Online Resources
 
 Lecture notes, assignments, and public information about the course will
-be posted on the course website, <https://jhucsf.github.io/spring2024>.
+be posted on the course website, <https://jhucsf.github.io/fall2024>.
 You should check the course website frequently.
 
 Courselore (announcements, discussion): <https://courselore.org/>
@@ -66,7 +65,7 @@ Courselore (announcements, discussion): <https://courselore.org/>
 Gradescope (assignment/exam submission and grading): <https://www.gradescope.com/>
 
 Videos will be posted on Canvas: go to <http://my.jhu.edu>, log in,
-choose <b>Education</b> → <b>Canvas</b>, choose EN.601.229.01.SP24 from
+choose <b>Education</b> → <b>Canvas</b>, choose EN.601.229.01.FA24 from
 courses, then choose <b>Panopto Video</b>
 
 ## Course Information
