@@ -38,4 +38,9 @@ Gradescope.
 
 ## News
 
-* **Aug 26** — Welcome back!
+* **Aug 21** — Welcome back! If you would like to borrow an iClicker remote
+  for the semester (you will need one), please [fill out and submit the
+  iClicker loan form](https://forms.gle/JnrDwMocCpMpj4jC6) and
+  pick up your iClicker at either of the following times/locations:
+  1. Sunday, Aug 25th, 1–3 pm, Malone 240A
+  2. Monday, Aug 26th, 7-8:30 am, outside Hackerman B-17
