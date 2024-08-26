@@ -38,6 +38,8 @@ Gradescope.
 
 ## News
 
+* **Aug 26** — [Assignment 1](assign/assign01.html) has two milestones,
+  due Wednesday, Sep 4th and Wednesday, Sep 11th, respectively.
 * **Aug 21** — Welcome back! If you would like to borrow an iClicker remote
   for the semester (you will need one), please [fill out and submit the
   iClicker loan form](https://forms.gle/JnrDwMocCpMpj4jC6) and
