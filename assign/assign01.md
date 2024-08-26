@@ -21,8 +21,9 @@ Milestone 1 (15% of the assignment grade):
 * Implementation of functions (15%)
   - constructors
   - destructor
-  - `get_bit_vector()` member function
+  - assignment operator
   - `git_bits(unsigned)` member function
+  - `get_bit_vector()` member function
   - `is_negative()` member function
   - `operator-()` member function (unary minus)
   - `to_hex()` member function (conversion to base-16)
