@@ -388,6 +388,18 @@ uint32_t blend_components( uint32_t fg, uint32_t bg, uint32_t alpha );
 uint32_t blend_colors( uint32_t fg, uint32_t bg );
 ```
 
+## Image tests
+
+The provided script `run_all.sh` runs your `c_imgproc` or `asm_imgproc` program
+on some example input images and checks whether a correct output image
+is produced. To run it:
+
+```
+./run_all.sh
+```
+
+## Hints and tips
+
 ### x86-64 tips
 
 Here are some x86-64 assembly language tips and tricks in no particular order.
