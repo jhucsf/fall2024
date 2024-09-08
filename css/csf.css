@@ -134,6 +134,7 @@ span.csf {
 }
 
 div.highlighter-rouge, div.shell {
+  font-family: "Roboto Mono", monospace;
   margin-left: 2em;
   margin-right: 2em;
   background-color: #eee;

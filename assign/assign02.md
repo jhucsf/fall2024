@@ -307,10 +307,9 @@ implements both of these programs. The only difference between `c_imgproc` and
 
 To run these programs:
 
-<div class='highlighter-rouge'><pre>
-./c_imgproc <i>input.png</i> <i>transformation</i> <i>output.png</i> [<i>transformation argument</i>]
-./asm_imgproc <i>input.png</i> <i>transformation</i> <i>output.png</i> [<i>transformation argument</i>]
-</pre></div>
+<div class='highlighter-rouge'><pre><code>./c_imgproc <i>input.png</i> <i>transformation</i> <i>output.png</i> [<i>argument</i>]
+./asm_imgproc <i>input.png</i> <i>transformation</i> <i>output.png</i> [<i>argument</i>]
+</code></pre></div>
 
 In these commands:
 
@@ -320,7 +319,7 @@ In these commands:
   image transformation to perform
 * <code class='highlighter-rouge'><i>output.png</i></code> is the name of the output
   image file to write
-* <code class='highlighter-rouge'>[<i>transformation argument</i>]</code> is the
+* <code class='highlighter-rouge'>[<i>argument</i>]</code> is the
   argument needed by the transformation, if any (the tiling factor for the
   `tile` transformation, and the overlay image filename for the `composite`
   transformation)
@@ -335,7 +334,19 @@ mkdir -p actual
 The above commands would apply the `mirror_h` transformation on the input image
 `input/ingo.png` to produce the output image file `actual/c_ingo_mirror_h.png`.
 
-## Unit tests
+Another example:
+
+```text
+mkdir -p actual
+./c_imgproc input/kittens.png composite \
+  actual/c_kittens_composite_dice.png input/dice.png
+```
+
+This second example runs the `composite` transformation using `input/kittens.png` as
+the base image, `input/dice.png` as the overlay image, and generates the output
+image file `actual/c_kittens_composite_dice.png`.
+
+## Unit tests, helper functions
 
 The source file `imgproc_tests.c` is a unit test program that you should use to
 test the functions in `c_imgproc_fns.c` and `asm_imgproc_fns.S`.
@@ -355,3 +366,254 @@ able to make steady progress towards getting your assembly code to work in
 Milestones 2 and 3.
   </div>
 </div>
+
+You are free to implement whatever helper functions make sense. The reference
+implementation defined the following helper functions:
+
+```c
+int all_tiles_nonempty( int width, int height, int n );
+int determine_tile_w( int width, int n, int tile_col );
+int determine_tile_x_offset( int width, int n, int tile_col );
+int determine_tile_h( int height, int n, int tile_row );
+int determine_tile_y_offset( int height, int n, int tile_row );
+void copy_tile( struct Image *out_img, struct Image *img,
+                int tile_row, int tile_col, int n );
+uint32_t get_r( uint32_t pixel );
+uint32_t get_g( uint32_t pixel );
+uint32_t get_b( uint32_t pixel );
+uint32_t get_a( uint32_t pixel );
+uint32_t make_pixel( uint32_t r, uint32_t g, uint32_t b, uint32_t a );
+uint32_t to_grayscale( uint32_t pixel );
+uint32_t blend_components( uint32_t fg, uint32_t bg, uint32_t alpha );
+uint32_t blend_colors( uint32_t fg, uint32_t bg );
+```
+
+### x86-64 tips
+
+Here are some x86-64 assembly language tips and tricks in no particular order.
+
+Callee-saved registers are your best option to serve as local variables
+in your assembly language functions. The callee-saved registers are
+`%r12`, `%r13`, `%r14`, `%r15`, `%rbx`, and `%rbp`. If you are going
+to store data in a callee-saved register, make sure that you use `pushq`
+to save its value at the beginning of the function, and `popq` to restore
+its value at the end of the function. (The `popq` instructions must be in
+the opposite order as the `pushq` instructions.)
+
+If you run out of callee-saved registers, then you can use memory in the
+stack frame to store local variables. We *highly* recommend using an ABI-compliant
+stack frame to reserve memory in the current stack frame, since that will allow
+`gdb` to properly recognize the functions on the call stack. To do so,
+your function's prologue code should look like this:
+
+<div class='highlighter-rouge'><pre><code>pushq %rbp
+movq %rsp, %rbp
+subq $N, %rsp
+<i>...push callee-saved registers...</i>
+</code></pre></div>
+
+This prologue will reserve *N* bytes of memory in the stack frame that
+you can use for local variables. Note that all local variables in memory
+should be accessed at *negative* offsets from `%rbp`. For example, if you
+reserved 16 bytes for local variables, and you need space for four 4-byte
+variables, you can refer to them as `-4(%rbp)`, `-8(%rbp)`, `-12(%rbp)`,
+and `-16(%rbp)`.
+
+Don't forget that the amount by which the stack pointer is
+changed needs to be an odd multiple of 8 (so 8, or 24, or 40, etc.),
+and that each `pushq` subtracts 8 from `%rsp`.
+Also, don't  forget to pop back the original values of any saved
+callee-saved registers, including `%rbp`. In general, your function
+epilogue code should look like
+
+<div class='highlighter-rouge'><pre><code><i>...pop callee-saved registers...</i>
+addq $N, %rsp
+popq %rbp
+</code></pre></div>
+
+If you've reserved memory for local variables on the stack, you can
+refer to them by their offsets from `%rsp`. (See the example comment
+below.)
+
+Don't forget that you need to prefix constant values with `$`.  For example,
+if you want to set register `%r10` to 16, the instruction is
+
+```
+movq $16, %r10
+```
+
+and not
+
+```
+movq 16, %r10
+```
+
+When calling a function, the stack pointer (`%rsp`) must contain an address
+which is a multiple of 16.  However, because the `callq` instruction
+pushes an 8 byte return address on the stack, on entry to a function,
+the stack pointer will be "off" by 8 bytes.  You can subtract 8 from
+`%rsp` when a function begins and add 8 bytes to `%rsp` before returning
+to compensate.  (See the example `addLongs` function.)  Pushing an
+odd number of callee-saved registers also works, and has the benefit
+that you can then use the callee-saved registers freely in your function.
+
+We *strongly* recommend that you have a comment in each function explaining
+how it uses callee-saved registers and stack memory, since these are
+the equivalent of local variables in assembly code. For example,
+here is a comment taken from the implementation of the `copy_tile`
+helper function in the reference solution:
+
+```
+/*
+ * Register use:
+ *   %r12 - pointer to output Image
+ *   %r13 - pointer to source Image
+ *   %r14d - tiling factor
+ *   %r15d - tile pixel row
+ *   %ebx - tile pixel column
+ *
+ * Memory use:
+ *   -4(%rbp) - tile row index
+ *   -8(%rbp) - tile column index
+ *   -12(%rbp) - tile_w
+ *   -16(%rbp) - tile_x_off
+ *   -20(%rbp) - tile_h
+ *   -24(%rbp) - tile_y_off
+ */
+```
+
+Recall that your assembly language code must have detailed comments
+explaining each line of assembly code. The following example
+function illustrates the level of commenting that we expect to see:
+
+```
+/*
+ * Determine the length of specified character string.
+ *
+ * Parameters:
+ *   %rdi - pointer to a NUL-terminated character string
+ *
+ * Returns:
+ *    number of characters in the string
+ */
+	.globl str_len
+str_len:
+	/* prologue to create ABI-compliant stack frame */
+	pushq %rbp
+	movq %rsp, %rbp
+
+.Lstr_len_loop:
+	cmpb $0, (%rdi)               /* found NUL terminator? */
+	jz .Lstr_len_done             /* if so, done */
+	inc %r10                      /* increment count */
+	inc %rdi                      /* advance to next character */
+	jmp .Lstr_len_loop            /* continue loop */
+
+.Lstr_len_done:
+	movq %r10, %rax               /* return count */
+
+	/* epilogue */
+	popq %rbp
+
+	ret
+```
+
+As illustrated in the example function, labels for control flow
+should be *local labels*, with names beginning with "`.L`".
+If you don't use local labels within functions, debugging with
+`gdb` will be difficult because `gdb` will think that each control
+flow label is the beginning of a function.
+
+### Debugging tips
+
+You primary means of determining whether or not your code works correctly
+is running the unit test programs (`c_imgproc_tests` and `asm_imgproc_tests`.)
+
+If a unit test fails, you should use `gdb` to debug the code to determine
+why it is not working.
+
+Setting a breakpoint on the specific test function that is failing is
+one way to start. For example, if the `test_to_grayscale` test function
+is failing, in `gdb` set a breakpoint on that function, then run the
+program so that it only runs that test function:
+
+```
+break test_to_grayscale
+run test_to_grayscale
+```
+
+You will gain control of the program at the beginning of the test
+function, at which point you can step through the code, inspect
+variables, registers, and memory, etc.
+
+Another good option for setting a breakpoint is the `tctest_fail`
+function, because this is the function called when a test assertion
+fails. For example, assuming `test_to_grayscale` has an assertion failure:
+
+```
+break tctest_fail
+run test_to_grayscale
+```
+
+When the `tctest_fail` breakpoint is reached, use the `up` command (as many
+times as needed) to enter the stack frame for the failing assertion.
+This can allow you to check variables at the location of the assertion.
+
+Don't forget that you can inspect register values in `gdb` by prefixing the
+register name with the "`$`" character. For example:
+
+```
+print $ebx
+```
+
+would show you the contents of the `%ebx` register. Using `print/x` allows
+you to see integer values in hexadecimal (very useful for checking color values.)
+
+Casting a register to a pointer allows you to interpret memory as values
+belonging to C data types. For example, let's say `%r10` points to a
+`struct Image` instance. You could check the value of the element
+at index 18 of the `data` array using the command
+
+```
+print/x ((struct Image *)$r10)->data[18]
+```
+
+If you are storing local variables in stack memory, and using `%rsp` to
+access them, it is easy to see their values. In particular, if all of the
+local variables are the same size and type (e.g., they are all
+4-byte integers), then you can think of them as an array.
+For example, in the comment above about local variable allocation,
+there are 8 local variables allocated in stack memory, each of which
+is a 4 byte integer value. We can see all of the values at once
+with the `gdb` comamnd
+
+```
+print (unsigned [8]) *((unsigned *)$rsp)
+```
+
+Here we are pretending that these variables belong to the `unsigned` type,
+which is the same as the `uint32_t` type.  The `(unsigned [8])` at the
+beginning of the expression tells `gdb` that we are interpreting the
+memory as an array of 8 `unsigned` elements.
+
+## Submitting
+
+Before you upload your submission, make sure that your `README.txt`
+contains the name of each team member and a brief summary of each team member's
+contributions to the submission. If there is anything you would like us to
+know about your submission, you can also add it to `README.txt`.
+
+To prepare a zipfile for submission, run the command
+
+```
+make solution.zip
+```
+
+Please do not submit object files, executables, PNG image files,
+or other files not mentioned above. (If you use `make solution.zip`
+as recommended above, only the necessary files will be included in
+the zipfile.)
+
+Upload the zipfile to [Gradescope](https://www.gradescope.com) as
+**Assignment 2 MS1**, **Assignment 2 MS2**, or **Assignment 2 MS3**, depending
+on which milestone you are submitting.
