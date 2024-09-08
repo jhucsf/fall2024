@@ -1,3 +1,11 @@
+body {
+  font-family: "Libre Baskerville", serif;
+}
+
+code {
+  font-family: "Roboto Mono", monospace;
+}
+
 h1 {
   color: #1f386b;
   border-top: 3px solid;
@@ -124,17 +132,6 @@ span.csf {
   color: #1f386b;
   background-color: #1f386b;
 }
-
-/*
-code.cmd {
-  background: #222;
-  color: #8f8;
-  border: 1px solid #484;
-  padding-left: 3px;
-  padding-right: 3px;
-  border-radius: .25em;
-}
-*/
 
 div.highlighter-rouge, div.shell {
   margin-left: 2em;
