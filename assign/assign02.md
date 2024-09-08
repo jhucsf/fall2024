@@ -402,7 +402,7 @@ the opposite order as the `pushq` instructions.)
 
 If you run out of callee-saved registers, then you can use memory in the
 stack frame to store local variables. We *highly* recommend using an ABI-compliant
-stack frame to reserve memory in the current stack frame, since that will allow
+stack frame to reserve memory for local variables, since that will allow
 `gdb` to properly recognize the functions on the call stack. To do so,
 your function's prologue code should look like this:
 
