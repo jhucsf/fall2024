@@ -31,7 +31,7 @@ to successful implementation of the assembly language functions.
 ## Overview
 
 In this assignment, you will implement transformations on image files,
-using both C (in Milestone 1) and assembly language (in Milestones 2 and 3.)
+using both C (in Milestone 1) and x86-64 assembly language (in Milestones 2 and 3.)
 
 ### Non-functional requirements
 
@@ -70,6 +70,11 @@ etc.  This applies to both your C code and your assembly code.
 
 To get started, download [csf\_assign02.zip](csf_assign02.zip) and
 unzip it.
+
+You will implement the functions in `c_imgproc_fns.c` (Milestone 1)
+and `asm_imgproc_fns.S` (Milestones 2 and 3.) You will also add
+prototypes for helper functions to `imgproc.h` and implement additional
+unit tests in `imgproc_tests.c`.
 
 ## Grading breakdown
 
@@ -222,6 +227,9 @@ Original image | Transformed image
 
 The `grayscale` transformation converts a color image to grayscale.
 
+The [Grayscale](#grayscale) section documents how color pixel values are
+converted to grayscale pixel values.
+
 Example images (click for full size):
 
 Original image | Transformed image
@@ -287,3 +295,63 @@ Compositing the two images produces the following result image
    </td>
  </tr>
 </table>
+
+## `c_imgproc` and `asm_imgproc` programs
+
+The `c_imgproc` and `asm_imgproc` programs apply one of the image transformations
+to an input image (or, in the case of the `composite` transformation, two input images),
+and write the result to an output image file.  The `c_imgproc_main.c` source file
+implements both of these programs. The only difference between `c_imgproc` and
+`asm_imgproc` is whether the image transformations are implemented in C
+(`c_imgproc_fns.c`) or x86-64 assembly language (`asm_imgproc_fns.S`.)
+
+To run these programs:
+
+<div class='highlighter-rouge'><pre>
+./c_imgproc <i>input.png</i> <i>transformation</i> <i>output.png</i> [<i>transformation argument</i>]
+./asm_imgproc <i>input.png</i> <i>transformation</i> <i>output.png</i> [<i>transformation argument</i>]
+</pre></div>
+
+In these commands:
+
+* <code class='highlighter-rouge'><i>input.png</i></code> is the name of the input
+  image file
+* <code class='highlighter-rouge'><i>transformation</i></code> is the name of the
+  image transformation to perform
+* <code class='highlighter-rouge'><i>output.png</i></code> is the name of the output
+  image file to write
+* <code class='highlighter-rouge'>[<i>transformation argument</i>]</code> is the
+  argument needed by the transformation, if any (the tiling factor for the
+  `tile` transformation, and the overlay image filename for the `composite`
+  transformation)
+
+For example, to run the `mirror_h` transformation using the `c_imgproc` program:
+
+```text
+mkdir -p actual
+./c_imgproc input/ingo.png mirror_h actual/c_ingo_mirror_h.png
+```
+
+The above commands would apply the `mirror_h` transformation on the input image
+`input/ingo.png` to produce the output image file `actual/c_ingo_mirror_h.png`.
+
+## Unit tests
+
+The source file `imgproc_tests.c` is a unit test program that you should use to
+test the functions in `c_imgproc_fns.c` and `asm_imgproc_fns.S`.
+
+The starter code has some very basic tests for the API functions implementing the
+various image transformations. However, you will need to write unit tests for
+your *helper functions*. The idea is that your assembly language code will implement
+exactly the same helper functions as your C code, and having a comprehensive set
+of unit tests for these helper functions will allow you to get your assembly code
+working incrementally by implementing the helper functions one at a time.
+
+<div class='admonition info'>
+  <div class='title'>Tip</div>
+  <div class='content' markdown='1'>
+Having a good set of unit tests for your helper functions is essential for being
+able to make steady progress towards getting your assembly code to work in
+Milestones 2 and 3.
+  </div>
+</div>
