@@ -33,6 +33,49 @@ to successful implementation of the assembly language functions.
 In this assignment, you will implement transformations on image files,
 using both C (in Milestone 1) and x86-64 assembly language (in Milestones 2 and 3.)
 
+### Milestones
+
+In Milestone 1, you are required to implement all of the image transformations
+in C. You are also required to implement comprehensive unit tests for all of the
+helper functions you use to implement the transformations. The intent is that
+your assembly language code in Milestones 2 and 3 will implement the same
+helper functions, and your unit tests will help you gain confidence in their
+correctness.
+
+In Milestone 2, you are required to implement the [`mirror_h`](#the-mirror_h-transformation),
+[`mirror_v`](#the-mirror_v-transformation), and [`grayscale`](#the-grayscale-transformation)
+transformations in assembly language. We expect you to have comprehensive unit tests
+for the assembly language implementations of your helper functions. (In theory you can
+just use the ones you implemented in Milestone 1.)
+
+In Milestone 3, you will implement the [`composite`](#the-composite-transformation)
+and [`tile`](#the-tile-transformation) transformations. Note that the tile transformation
+is quite challenging, and is worth only 3% of the assignment grade.
+
+Note that in each milestone, we expect all of the tests executed
+by your unit test program to pass. For Milestone 2 in particular, you can
+comment out calls to test functions that aren't related to
+`draw_pixel`. For example, for Milestone 2 your `imgproc_test.c`'s
+`main` function might have code similar to the following:
+
+```c
+TEST( test_get_r );
+TEST( test_get_g );
+TEST( test_get_b );
+TEST( test_get_a );
+TEST( test_make_pixel );
+TEST( test_to_grayscale );
+//TEST( blend_components );
+//TEST( blend_colors );
+```
+
+The tests for `get_r`, `get_g`, `get_b`, `get_a`, `make_pixel`, and
+`to_grayscale` are enabled because they are all test functions involved
+in the implementations of the `grayscale` transformation, which is
+part of the requirements for MS2. The tests for `blend_components` and
+`blend_colors` are commented out because they are used in the `composite`
+transformation, which is not part of the requirements for MS2.
+
 ### Non-functional requirements
 
 In Milestones 2 and 3, you will be writing assembly language functions.
@@ -66,6 +109,26 @@ We expect your code to be free of memory errors. You should use
 of uninitialized variables, out of bounds memory reads or writes,
 etc.  This applies to both your C code and your assembly code.
 
+### Grading breakdown
+
+Milestone 1: 30%
+
+* Implementation of C image transformation functions: 12.5%
+* Unit testing of helper functions: 12.5%
+* Design/coding style of C functions: 5%
+
+Milestone 2: 45%
+
+* Functional correctness of `imgproc_mirror_h`, `imgproc_mirror_v`, and `imgproc_grayscale`: 25%
+* Unit testing of helper functions: 15%
+* Design/coding style of assembly functions: 5%
+
+Milestone 3: 25%
+
+* Functional correctness of `imgproc_composite`: 17%
+* Functional correctness of `imgproc_tile`: 3%
+* Design/coding style of assembly functions: 5%
+
 ## Getting started
 
 To get started, download [csf\_assign02.zip](csf_assign02.zip) and
@@ -75,34 +138,6 @@ You will implement the functions in `c_imgproc_fns.c` (Milestone 1)
 and `asm_imgproc_fns.S` (Milestones 2 and 3.) You will also add
 prototypes for helper functions to `imgproc.h` and implement additional
 unit tests in `imgproc_tests.c`.
-
-## Grading breakdown
-
-*TODO: rubric for each milestone*
-
-Note that in each milestone, we expect all of the tests executed
-by your unit test program to pass. For Milestone 2 in particular, you can
-comment out calls to test functions that aren't related to
-`draw_pixel`. For example, for Milestone 2 your `imgproc_test.c`'s
-`main` function might have code similar to the following:
-
-```c
-TEST( test_get_r );
-TEST( test_get_g );
-TEST( test_get_b );
-TEST( test_get_a );
-TEST( test_make_pixel );
-TEST( test_to_grayscale );
-//TEST( blend_components );
-//TEST( blend_colors );
-```
-
-The tests for `get_r`, `get_g`, `get_b`, `get_a`, `make_pixel`, and
-`to_grayscale` are enabled because they are all test functions involved
-in the implementations of the `grayscale` transformation, which is
-part of the requirements for MS2. The tests for `blend_components` and
-`blend_colors` are commented out because they are used in the `composite`
-transformation, which is not part of the requirements for MS2.
 
 ## Image processing
 
