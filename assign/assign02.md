@@ -443,10 +443,6 @@ addq $N, %rsp
 popq %rbp
 </code></pre></div>
 
-If you've reserved memory for local variables on the stack, you can
-refer to them by their offsets from `%rsp`. (See the example comment
-below.)
-
 Don't forget that you need to prefix constant values with `$`.  For example,
 if you want to set register `%r10` to 16, the instruction is
 
@@ -465,15 +461,19 @@ which is a multiple of 16.  However, because the `callq` instruction
 pushes an 8 byte return address on the stack, on entry to a function,
 the stack pointer will be "off" by 8 bytes.  You can subtract 8 from
 `%rsp` when a function begins and add 8 bytes to `%rsp` before returning
-to compensate.  (See the example `addLongs` function.)  Pushing an
-odd number of callee-saved registers also works, and has the benefit
-that you can then use the callee-saved registers freely in your function.
+to compensate.  Pushing an odd number of callee-saved registers also works,
+and has the benefit that you can then use the callee-saved registers freely
+in your function. Sometimes you may need to subtract 8 from `%rsp` even
+if your function doesn't allocate storate for any local variables in memory,
+just to ensure that `%rsp` is aligned correctly.
 
 We *strongly* recommend that you have a comment in each function explaining
 how it uses callee-saved registers and stack memory, since these are
 the equivalent of local variables in assembly code. For example,
 here is a comment taken from the implementation of the `copy_tile`
 helper function in the reference solution:
+
+<a name='register-memory-comment'>
 
 ```
 /*
@@ -493,6 +493,8 @@ helper function in the reference solution:
  *   -24(%rbp) - tile_y_off
  */
 ```
+
+</a>
 
 Recall that your assembly language code must have detailed comments
 explaining each line of assembly code. The following example
@@ -594,19 +596,25 @@ If you are storing local variables in stack memory, and using `%rsp` to
 access them, it is easy to see their values. In particular, if all of the
 local variables are the same size and type (e.g., they are all
 4-byte integers), then you can think of them as an array.
-For example, in the comment above about local variable allocation,
-there are 8 local variables allocated in stack memory, each of which
+For example, in [the comment above about local variable allocation](#register-memory-comment),
+there are 6 local variables allocated in stack memory, each of which
 is a 4 byte integer value. We can see all of the values at once
 with the `gdb` comamnd
 
 ```
-print (unsigned [8]) *((unsigned *)$rsp)
+print (unsigned [6]) *((unsigned *)$rsp)
 ```
 
 Here we are pretending that these variables belong to the `unsigned` type,
-which is the same as the `uint32_t` type.  The `(unsigned [8])` at the
+which is the same as the `uint32_t` type.  The `(unsigned [6])` at the
 beginning of the expression tells `gdb` that we are interpreting the
-memory as an array of 8 `unsigned` elements.
+memory as an array of 6 `unsigned` elements. Note that because `%rsp`
+points to the "bottom" of the memory area reserved for local variables,
+and the local variables are accessed at negative offsets from `%rbp`
+(which points to the "top" of the local variable area), the above
+`print` command will show the values of the local variables starting
+with the local variable with the "lowest" address, i.e., the one at
+`-24(%rbp)`.
 
 ## Submitting
 
