@@ -473,7 +473,7 @@ the equivalent of local variables in assembly code. For example,
 here is a comment taken from the implementation of the `copy_tile`
 helper function in the reference solution:
 
-<a name='register-memory-comment' markdown="1">
+<a name='register-memory-comment'>
 
 ```
 /*
