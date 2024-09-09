@@ -473,7 +473,7 @@ the equivalent of local variables in assembly code. For example,
 here is a comment taken from the implementation of the `copy_tile`
 helper function in the reference solution:
 
-<a name='register-memory-comment'>
+<a name='register-memory-comment' markdown="1">
 
 ```
 /*
@@ -493,8 +493,6 @@ helper function in the reference solution:
  *   -24(%rbp) - tile_y_off
  */
 ```
-
-</a>
 
 Recall that your assembly language code must have detailed comments
 explaining each line of assembly code. The following example
