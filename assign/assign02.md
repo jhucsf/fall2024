@@ -3,12 +3,6 @@ layout: mathjax
 title: "Assignment 2: Image Processing"
 ---
 
-<div style="font-size: 120%; font-style: italic; text-align: center;">
-  Note: this is a preliminary assignment description.
-  Elements of the assignment description may be missing or incomplete,
-  and details may change.
-</div>
-
 **Due**:
 
 * Milestone 1 due **Friday, Sep 20th** by 11 pm
