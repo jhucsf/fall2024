@@ -602,19 +602,18 @@ is a 4 byte integer value. We can see all of the values at once
 with the `gdb` comamnd
 
 ```
-print (unsigned [6]) *((unsigned *)$rsp)
+print (unsigned [6]) *((unsigned *)($rbp - 24))
 ```
 
 Here we are pretending that these variables belong to the `unsigned` type,
 which is the same as the `uint32_t` type.  The `(unsigned [6])` at the
 beginning of the expression tells `gdb` that we are interpreting the
-memory as an array of 6 `unsigned` elements. Note that because `%rsp`
-points to the "bottom" of the memory area reserved for local variables,
-and the local variables are accessed at negative offsets from `%rbp`
-(which points to the "top" of the local variable area), the above
-`print` command will show the values of the local variables starting
-with the local variable with the "lowest" address, i.e., the one at
-`-24(%rbp)`.
+memory as an array of 6 `unsigned` elements. We use the expression
+`$rbp - 24` to compute the address of the beginning of the local variable
+area, because it is 24 bytes in size, and `%rbp` points to the "top"
+of the area. Note that the `print` command will show the values of the local
+variables starting with the local variable with the "lowest" address, i.e.,
+the one referred to as `-24(%rbp)`.
 
 ## Submitting
 
