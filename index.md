@@ -38,6 +38,8 @@ Gradescope.
 
 ## News
 
+* **Sep 10** — [Assignment 2](assign/assign02.html) has three milestones,
+  due Friday, Sep 20th, Friday, Sep 27th, and Friday, Oct 4th, respectively.
 * **Aug 26** — [Assignment 1](assign/assign01.html) has two milestones,
   due Wednesday, Sep 4th and Wednesday, Sep 11th, respectively.
 * **Aug 21** — Welcome back! If you would like to borrow an iClicker remote
