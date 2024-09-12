@@ -60,8 +60,8 @@ TEST( test_get_b );
 TEST( test_get_a );
 TEST( test_make_pixel );
 TEST( test_to_grayscale );
-//TEST( blend_components );
-//TEST( blend_colors );
+//TEST( test_blend_components );
+//TEST( test_blend_colors );
 ```
 
 The tests for `get_r`, `get_g`, `get_b`, `get_a`, `make_pixel`, and
