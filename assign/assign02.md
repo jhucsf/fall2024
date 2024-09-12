@@ -11,6 +11,8 @@ title: "Assignment 2: Image Processing"
 
 This is a **pair** assignment, so you may work with one partner.
 
+*Update 9/12*: some minor edits and clarifications.
+
 <div class='admonition danger'>
   <div class='title'>Warning!</div>
   <div class='content' markdown='1'>
@@ -50,7 +52,7 @@ is quite challenging, and is worth only 3% of the assignment grade.
 Note that in each milestone, we expect all of the tests executed
 by your unit test program to pass. For Milestone 2 in particular, you can
 comment out calls to test functions that aren't related to
-`draw_pixel`. For example, for Milestone 2 your `imgproc_test.c`'s
+helper functions needed for Milestone 2. For example, for Milestone 2 your `imgproc_test.c`'s
 `main` function might have code similar to the following:
 
 ```c
