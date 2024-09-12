@@ -43,7 +43,8 @@ for the assembly language implementations of your helper functions. (In theory y
 just use the ones you implemented in Milestone 1.)
 
 In Milestone 3, you will implement the [`composite`](#the-composite-transformation)
-and [`tile`](#the-tile-transformation) transformations. Note that the tile transformation
+and [`tile`](#the-tile-transformation) transformations. Note that the assembly
+language implementation of the tile transformation
 is quite challenging, and is worth only 3% of the assignment grade.
 
 Note that in each milestone, we expect all of the tests executed
