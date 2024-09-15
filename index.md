@@ -38,6 +38,9 @@ Gradescope.
 
 ## News
 
+* **Sep 15** — [Assignment 2](assign/assign02.html) has been updated to
+  correct the image processing program command line syntax and examples
+  (i.e., how to run the `c_imgproc` and `asm_imgproc` programs.)
 * **Sep 10** — [Assignment 2](assign/assign02.html) has three milestones,
   due Friday, Sep 20th, Friday, Sep 27th, and Friday, Oct 4th, respectively.
 * **Aug 26** — [Assignment 1](assign/assign01.html) has two milestones,

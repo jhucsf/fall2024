@@ -13,6 +13,9 @@ This is a **pair** assignment, so you may work with one partner.
 
 *Update 9/12*: some minor edits and clarifications.
 
+*Update 9/15*: corrections to image processing program command line
+syntax and examples.
+
 <div class='admonition danger'>
   <div class='title'>Warning!</div>
   <div class='content' markdown='1'>
@@ -339,16 +342,16 @@ implements both of these programs. The only difference between `c_imgproc` and
 
 To run these programs:
 
-<div class='highlighter-rouge'><pre><code>./c_imgproc <i>input.png</i> <i>transformation</i> <i>output.png</i> [<i>argument</i>]
-./asm_imgproc <i>input.png</i> <i>transformation</i> <i>output.png</i> [<i>argument</i>]
+<div class='highlighter-rouge'><pre><code>./c_imgproc <i>transformation</i> <i>input.png</i> <i>output.png</i> [<i>argument</i>]
+./asm_imgproc <i>transformation</i> <i>input.png</i> <i>output.png</i> [<i>argument</i>]
 </code></pre></div>
 
 In these commands:
 
-* <code class='highlighter-rouge'><i>input.png</i></code> is the name of the input
-  image file
 * <code class='highlighter-rouge'><i>transformation</i></code> is the name of the
   image transformation to perform
+* <code class='highlighter-rouge'><i>input.png</i></code> is the name of the input
+  image file
 * <code class='highlighter-rouge'><i>output.png</i></code> is the name of the output
   image file to write
 * <code class='highlighter-rouge'>[<i>argument</i>]</code> is the
@@ -360,7 +363,7 @@ For example, to run the `mirror_h` transformation using the `c_imgproc` program:
 
 ```text
 mkdir -p actual
-./c_imgproc input/ingo.png mirror_h actual/c_ingo_mirror_h.png
+./c_imgproc mirror_h input/ingo.png actual/c_ingo_mirror_h.png
 ```
 
 The above commands would apply the `mirror_h` transformation on the input image
@@ -370,7 +373,7 @@ Another example:
 
 ```text
 mkdir -p actual
-./c_imgproc input/kittens.png composite \
+./c_imgproc composite input/kittens.png \
   actual/c_kittens_composite_dice.png input/dice.png
 ```
 
