@@ -1,5 +1,6 @@
 body {
   font-family: "Libre Baskerville", serif;
+  font-size: 12pt;
 }
 
 code {
@@ -8,9 +9,9 @@ code {
 
 h1 {
   color: #1f386b;
-  border-top: 3px solid;
+  /*border-top: 3px solid;
   border-bottom: 3px solid;
-  border-color: #1f386b;
+  border-color: #1f386b;*/
   margin-top: 1em;
 }
 
@@ -60,11 +61,16 @@ tr:nth-child(even) {
   padding-bottom: .5em;
 }
 
+#navbar_container {
+  margin: 0 auto;
+  max-width: fit-content;
+}
+
 #navbar {
   list-style-type: none;
-  margin: 2em 0 0 0;
+  margin: 0;
   padding: 0;
-  float: left;
+  font-size: 0; /* gets rid of annoying inferred whitespace between items */
 }
 
 /*
@@ -78,11 +84,18 @@ span.csf {
   font-weight: bold;
 }
 
+li span.csf {
+  margin-top: -0.5em;
+}
+
 #navbar li, span.csf {
-  float: left;
+  font-size: 12pt;  /* because #navbar specified font-size: 0; */
+  display: inline;
   padding: 0;
   border: 0;
   margin: 0;
+  text-align: center;
+  vertical-align: middle;
 }
 
 #navbar li a, span.csf {
@@ -94,8 +107,7 @@ span.csf {
 }
 
 #navbar li a {
-  min-width: 6em;
-  text-align: center;
+  min-width: 5em;
 }
 
 #navbar li a:hover {
