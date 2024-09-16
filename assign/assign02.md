@@ -49,7 +49,8 @@ is quite challenging, and is worth only 3% of the assignment grade.
 Note that in each milestone, we expect all of the tests executed
 by your unit test program to pass. For Milestone 2 in particular, you can
 comment out calls to test functions that aren't related to
-`draw_pixel`. For example, for Milestone 2 your `imgproc_test.c`'s
+the `mirror_h`. `mirror_v`, and `grayscale` transformations.
+For example, for Milestone 2 your `imgproc_test.c`'s
 `main` function might have code similar to the following:
 
 ```c
@@ -176,13 +177,11 @@ an alpha value allows two colors to be "blended".)
 ### Color blending
 
 The color values of the destination image are always fully opaque,
-with an alpha value of 255.
-
-When a pixel is drawn to a destination image by any operation other than
-`draw_tile`, the pixel's color, which we'll call the "foreground" color,
-is blended with the existing color at the location where the pixel is being
-drawn, which we'l call the "background" color. To find the correct color
-value for the new pixel, the following computation is performed for
+with an alpha value of 255. However, for the `composite` transformation,
+the output image's pixels are a blend of the color values of the
+"base" image (background) and the "overlay" image (foreground.)
+To find the correct color value for a pixel in the output image, the
+following computation is performed for
 each color component, where $$f$$ is the foreground color component value,
 $$b$$ is the background color component value, and $$\alpha$$ is the
 alpha value of the foreground color:
