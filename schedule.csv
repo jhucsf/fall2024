@@ -3,20 +3,20 @@ Aug 26,"Course overview, binary data representation review",lectures/lecture01-p
 Aug 28,"Data representation, addresses",lectures/lecture02-public.pdf,,*CSAPP* 2.1,
 Aug 30,"Integer representation",lectures/lecture03-public.pdf,,*CSAPP* 2.2,
 Sep 2,"*Labor Day holiday, no class*"
-Sep 4,"Integer arithmetic",lectures/lecture04-public.pdf,,*CSAPP* 2.3,"<span class='tentative'>A1 MS1 due</span>"
+Sep 4,"Integer arithmetic",lectures/lecture04-public.pdf,,*CSAPP* 2.3,"[A1](assign/assign01.html) MS1 due"
 Sep 6,"Floating point",lectures/lecture05-public.pdf,,*CSAPP* 2.4,
 Sep 9,"Machine-level program representation",lectures/lecture06-public.pdf,addLongs.zip,*CSAPP* 3.1–3.4,
-Sep 11,"ALU operations, arithmetic",lectures/lecture07-public.pdf,alu.zip,*CSAPP* 3.5,"<span class='tentative'>A1 MS2 due</span>"
+Sep 11,"ALU operations, arithmetic",lectures/lecture07-public.pdf,alu.zip,*CSAPP* 3.5,"[A1](assign/assign01.html) MS2 due"
 Sep 13,"Control flow",lectures/lecture08-public.pdf,control.zip,*CSAPP* 3.6,
 Sep 16,"Procedures, stacks",lectures/lecture09-public.pdf,control2.zip,*CSAPP* 3.7,
 Sep 18,"Arrays and structs",lectures/lecture10-public.pdf,arraystruct.zip,*CSAPP* 3.8–3.9,
-Sep 20,"Assembly language in class exercise",lectures/assembly-exercise-public.pdf,,,"<span class='tentative'>A2 MS1 due</span>"
+Sep 20,"Assembly language in class exercise",lectures/assembly-exercise-public.pdf,,,"[A2](assign/assign02.html) MS1 due"
 Sep 23,"Code and data interactions, buffer overflows",lectures/lecture11-public.pdf,buf.zip,*CSAPP* 3.10,
 Sep 25,"Program optimization (basic techniques): see Canvas for slides",,,*CSAPP* 5.1–5.8,
-Sep 27,"Exam 1 review session",,,,"<span class='tentative'>A2 MS2 due</span>"
+Sep 27,"Exam 1 review session",,,,"[A2](assign/assign02.html) MS2 due"
 Sep 30,"**Exam 1** (in class)",
 Oct 2,"Pipelines",lectures/lecture13-public.pdf,,"<i>P&amp;H</i> 4.5–4.7",
-Oct 4,"Program optimization (ILP, memory, profiling): see Canvas for slides",,,*CSAPP* 5.9–5.14,"<span class='tentative'>A2 MS3 due</span>"
+Oct 4,"Program optimization (ILP, memory, profiling): see Canvas for slides",,,*CSAPP* 5.9–5.14,"[A2](assign/assign02.html) MS3 due"
 Oct 7,"Memory hierarchy",lectures/lecture15-public.pdf,,*CSAPP* 6.1–6.3,
 Oct 9,"Cache policies",lectures/lecture16-public.pdf,,*CSAPP* 6.4,"<span class='tentative'>A3 MS1 due</span>"
 Oct 11,"Caches and program execution: see Canvas for slides",,,*CSAPP* 6.5,
