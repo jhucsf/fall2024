@@ -16,6 +16,9 @@ This is a **pair** assignment, so you may work with one partner.
 *Update 9/15*: corrections to image processing program command line
 syntax and examples.
 
+*Update 9/16*: fixed some confusing language in the
+[Color blending](#color-blending) section.
+
 <div class='admonition danger'>
   <div class='title'>Warning!</div>
   <div class='content' markdown='1'>
@@ -181,14 +184,17 @@ an alpha value allows two colors to be "blended".)
 
 ### Color blending
 
-The color values of the destination image are always fully opaque,
-with an alpha value of 255.
+The color values of the output image are always fully opaque,
+with an alpha value of 255. For the `composite` transformation,
+the output image's pixels are a blend of the color values of the
+"base" image (background) and the "overlay" image (foreground.)
+For the pixels in the overlay image, each pixel's alpha value
+represents a degree of opacity from 0 (fully transparent) to 255
+(fully opaque.) So, in general, the colors of pixels in the output
+image requires blending the base and overlay pixel colors.
 
-When a pixel is drawn to a destination image by any operation other than
-`draw_tile`, the pixel's color, which we'll call the "foreground" color,
-is blended with the existing color at the location where the pixel is being
-drawn, which we'l call the "background" color. To find the correct color
-value for the new pixel, the following computation is performed for
+To find the correct color value for a pixel in the output image, the
+following computation is performed for
 each color component, where $$f$$ is the foreground color component value,
 $$b$$ is the background color component value, and $$\alpha$$ is the
 alpha value of the foreground color:
