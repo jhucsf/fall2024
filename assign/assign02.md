@@ -5,7 +5,7 @@ title: "Assignment 2: Image Processing"
 
 **Due**:
 
-* Milestone 1 due **Friday, Sep 20th** by 11 pm
+* Milestone 1 due **Monday, Sep 23rd** by 11 pm
 * Milestone 2 due **Friday, Sep 27th** by 11 pm
 * Milestone 3 due **Friday, Oct 4th** by 11 pm
 
@@ -18,6 +18,9 @@ syntax and examples.
 
 *Update 9/16*: fixed some confusing language in the
 [Color blending](#color-blending) section.
+
+*Update 9/20*: changed Milestone 1 deadline to Monday, Sept. 23rd
+so that feedback on Assignment 1 MS2 can be taken into account.
 
 <div class='admonition danger'>
   <div class='title'>Warning!</div>

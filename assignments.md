@@ -43,4 +43,4 @@ up an x86-64 Linux development environment. (There are a number of good options.
 Assignment | Type | Due
 ---------- | :--: | ---
 [Assignment 1: Big Integers](assign/assign01.html) | Pair | MS1 due Wed, Sep 4th<br>MS2 due Wed, Sep 11th
-[Assignment 2: Image Processing](assign/assign02.html) | Pair | MS1 due Fri, Sep 20th<br> MS2 due Fri, Sep 27th<br>MS3 due Friday, Oct 4th
+[Assignment 2: Image Processing](assign/assign02.html) | Pair | MS1 due Mon, Sep 23rd<br> MS2 due Fri, Sep 27th<br>MS3 due Friday, Oct 4th

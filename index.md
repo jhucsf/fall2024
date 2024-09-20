@@ -38,6 +38,11 @@ Gradescope.
 
 ## News
 
+* **Sep 20** — In order to give you time to consider feedback from Assignment 1 MS2
+  grading (which will be released soon), we have moved the due date for
+  [Assignment 2](assign/assign02.html) MS1 to Monday, Sept 23rd. Note that the due
+  dates for MS2 and MS3 will *not* change, so you are still expected to start
+  working on those milestones ASAP.
 * **Sep 15** — [Assignment 2](assign/assign02.html) has been updated to
   correct the image processing program command line syntax and examples
   (i.e., how to run the `c_imgproc` and `asm_imgproc` programs.)
