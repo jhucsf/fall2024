@@ -84,10 +84,6 @@ span.csf {
   font-weight: bold;
 }
 
-li span.csf {
-  margin-top: -0.5em;
-}
-
 #navbar li, span.csf {
   font-size: 12pt;  /* because #navbar specified font-size: 0; */
   display: inline;
