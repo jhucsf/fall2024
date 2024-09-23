@@ -38,6 +38,10 @@ Gradescope.
 
 ## News
 
+* **Sep 23** — Exam 1 will take place in class on Monday, Sep 30th.
+  The exam is closed book/closed notes, no electronics. Review materials are
+  available on the [Resources](resources.html) page. Class on Friday,
+  Sep 27th will be used as a review session (please bring questions!)
 * **Sep 20** — In order to give you time to consider feedback from Assignment 1 MS2
   grading (which will be released soon), we have moved the due date for
   [Assignment 2](assign/assign02.html) MS1 to Monday, Sept 23rd. Note that the due
