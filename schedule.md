@@ -70,4 +70,4 @@ Nov 25–29 | *Fall vacation, no class* |  |
 Dec 2 | [Concurrency with I/O multiplexing](lectures/lecture33-public.pdf), [iomux.zip (example code)](lectures/iomux.zip) | *CSAPP* 12.2 | 
 Dec 4 | Bonus topics (TBD) |  | 
 Dec 6 | Exam 3 review session |  | <span class='tentative'>A5 MS2 due</span>
-TBD | **Exam 3** |  | 
+Dec 17 | **Exam 3**, 2pm, location TBD |  | 
