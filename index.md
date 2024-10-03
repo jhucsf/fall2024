@@ -38,6 +38,9 @@ Gradescope.
 
 ## News
 
+* **Oct 3** — [Assignment 3](assign/assign03.html) has three milestones,
+  due Wednesday, Oct 9th, Wednesday, Oct 23rd, and Wednesday, Oct 30th,
+  respectively.
 * **Sep 23** — Exam 1 will take place in class on Monday, Sep 30th.
   The exam is closed book/closed notes, no electronics. Review materials are
   available on the [Resources](resources.html) page. Class on Friday,
