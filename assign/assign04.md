@@ -36,7 +36,7 @@ Your assignment grade will be determined as follows:
 Download [csf\_assign04.zip](csf_assign04.zip) and unzip it. You will be
 modifying the file `parsort.c`.
 
-# Quicksort
+## Quicksort
 
 The starter code has a correct implementation of quicksort, so you don't really
 need to completely understand it in order to do the assignment. However, quicksort
@@ -81,7 +81,7 @@ quicksort generally chooses a pivot element such that the left and right
 partitions are roughly equal in size, the overall running time of
 quicksort is $$O(n \log n)$$ in the average case.
 
-## Parallel quicksort
+### Parallel quicksort
 
 Because the two recursive calls to quicksort operate on completely independent
 parts of the array, there is no reason why they can't execute in parallel
@@ -100,7 +100,7 @@ However, if a shared file mapping is created, the memory containing the data
 of the mapped file is shared between parent and child processes, which means
 a child process can participate in sorting the data in the file.
 
-# Tasks
+## Tasks
 
 To complete the assignment, you will need to do the following:
 
@@ -117,7 +117,7 @@ To complete the assignment, you will need to do the following:
    large file with varying parallel threshold values, and write a report
    explaining the observed running times
 
-## Task 1: open file, determine its size, map its data
+### Task 1: open file, determine its size, map its data
 
 You will start by modifying the program to open the file, determine its
 size, and using `mmap` to create a shared memory mapping of its contents.
@@ -171,7 +171,7 @@ choose any address in memory as the base address for the mapping. Since we don't
 where the file's data ends up in memory, so long as we can access it, this is what we want.
 Similarly, we want to map the entire file, so we set the offset to zero.
 
-## Task 2: verify that sequential sorting works
+### Task 2: verify that sequential sorting works
 
 Once the program can map the file's data, it should work correctly to implement
 sequential sorting of the data in the file. Two helper programs are provided
@@ -213,7 +213,7 @@ Also note that the data create by the `gen_rand_data` program is "pseudo-random"
 meaning that it is deterministic, and in general will always generate the same
 sequence of bytes.
 
-## Task 3: use child processes to execute the recursive calls
+### Task 3: use child processes to execute the recursive calls
 
 To allow the recursive sorting to make use of multiple CPU cores
 (when the number of elements being sorted is greater than the
@@ -319,7 +319,7 @@ In general, you will need to guarantee
 2. if any errors occur, they are correctly reported by having `quicksort`
    return 0 rather than 1
 
-## Task 4: experiments and analysis
+### Task 4: experiments and analysis
 
 To make sure that your `parsort` program is exhibiting the expected degree of
 parallelism, we would like you to perform an experiment where you create
@@ -396,3 +396,30 @@ OS kernel in parallel on different CPU cores. We don't expect a completely
 rigorous and in-depth explanation, but we *would* like you to
 give an intuitive explanation for the results that you observed.
 
+### Note on the autograder
+
+Passing the autograder will be a necessary but insufficient condition for full credit.
+This means that you may still lose functionality points, even if you pass all of the
+autograder tests. Due to the nature of testing parallel programs, there  will be a
+significant number of points up for manual review, so please structure your code
+accordingly. Some of the things we may manually verify (bot not limited to) are:
+
+* Ensuring that your implementation is actually parallel. (Your
+  [experiments](#experiments-and-analysis) should have already allowed you to
+  determine whether your program is exhibiting any parallel speedup.)
+* Ensuring that sorting is actually accomplished.
+* Ensuring that you did not leave zombies around during execution.
+* Ensuring that a "reasonable" number of children are created for a given threshold
+  and data size value.
+
+## Submitting
+
+Edit the `README.txt` file to include the report and summarize each team member's contributions.
+
+Create a zipfile of your solution using the command
+
+```
+make solution.zip
+```
+
+Submit your zipfile to Gradescope as **Assignment 4**.
