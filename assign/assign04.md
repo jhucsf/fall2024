@@ -85,7 +85,10 @@ quicksort is $$O(n \log n)$$ in the average case.
 
 Because the two recursive calls to quicksort operate on completely independent
 parts of the array, there is no reason why they can't execute in parallel
-on different CPU cores.
+on different CPU cores. This approach to converting a sequential algorithm
+to allow for parallelism is known as [fork/join](https://en.wikipedia.org/wiki/Fork%E2%80%93join_model),
+and in general can be used to speed up the execution of divide and
+conquer algorithms.
 
 Eventually we will learn about [threads](https://en.wikipedia.org/wiki/Thread_(computing))
 as a mechanism for executing instructions on multiple CPU cores. For this assignment,
@@ -96,3 +99,74 @@ since by default, child processes do not share memory with their parent process.
 However, if a shared file mapping is created, the memory containing the data
 of the mapped file is shared between parent and child processes, which means
 a child process can participate in sorting the data in the file.
+
+# Tasks
+
+To complete the assignment, you will need to do the following:
+
+1. Fill in missing details in the `main` function to open the file
+   containing the data to sort, determine its size, and use the
+   [mmap](https://man7.org/linux/man-pages/man3/qsort.3.html) system call
+   to create a shared mapping of the file's contents
+2. Verify that the program can correctly do sequential sorting
+   (without any parallelism)
+3. Modify the program so that when the number of elements to sort is
+   greater than the specified *parallel threshold*, the recursive calls
+   to the `quicksort` function are executed by child processes
+4. Do experiments to measure the observed speedup when sorting a
+   large file with varying parallel threshold values, and write a report
+   explaining the observed running times
+
+## Task 1: open file, determine its size, map its data
+
+You will start by modifying the program to open the file, determine its
+size, and using `mmap` to create a shared memory mapping of its contents.
+
+First, you will need to use the [open](https://man7.org/linux/man-pages/man2/open.2.html)
+syscall to open the file in read-write mode and get a file descriptor:
+
+```c
+int fd = open(filename, O_RDWR);
+if (fd < 0) {
+  // file couldn't be opened: handle error and exit
+}
+```
+
+Next, `mmap` will need to know how many bytes of data the file has. This can be
+accomplished using the [fstat](https://man7.org/linux/man-pages/man3/fstat.3p.html) system
+call:
+
+```c
+struct stat statbuf;
+int rc = fstat(fd, &statbuf);
+if (rc != 0) {
+    // handle fstat error and exit
+}
+// statbuf.st_size indicates the number of bytes in the file
+```
+
+Note that in addition to finding the size of the file, you should also
+compute the number of `int64_t` elements in the file's data.
+(I.e., divide the size in bytes by `sizeof(int64_t)`.) 
+
+Once the program knows the size of the file, creating a shared read-write mapping will
+allow the program, and all its descendants, to modify the file in-place in memory:
+
+```c
+int64_t *data = mmap(NULL, file_size_in_bytes,
+                     PROT_READ | PROT_WRITE,
+                     MAP_SHARED, fd, 0)
+close( fd ); // file can be closed now
+if (data == MAP_FAILED) {
+    // handle mmap error and exit
+}
+// *data now behaves like a standard array of int64_t.
+// Be careful though! Going off the end of the array will
+// silently extend the file, which can rapidly lead to
+// disk space depletion!
+```
+
+Passing in `NULL` for the requested mapping address gives `mmap` complete freedom to
+choose any address in memory to map. Since we don't care where the file ends up in memory,
+so long as we can access it, this is what we want. Similarly, we want to map the
+entire file, so we set the offset to zero.
