@@ -177,6 +177,14 @@ choose any address in memory as the base address for the mapping. Since we don't
 where the file's data ends up in memory, so long as we can access it, this is what we want.
 Similarly, we want to map the entire file, so we set the offset to zero.
 
+Note that before the `main` function returns, it should call
+[munmap](https://man7.org/linux/man-pages/man2/mmap.2.html) to unmap
+the file contents from memory. This should look something like
+
+```c
+munmap( arr, file_size_in_bytes );
+```
+
 ### Task 2: verify that sequential sorting works
 
 Once the program can map the file's data, it should work correctly to implement
