@@ -45,3 +45,4 @@ Assignment | Type | Due
 [Assignment 1: Big Integers](assign/assign01.html) | Pair | MS1 due Wed, Sep 4th<br>MS2 due Wed, Sep 11th
 [Assignment 2: Image Processing](assign/assign02.html) | Pair | MS1 due Mon, Sep 23rd<br> MS2 due Fri, Sep 27th<br>MS3 due Friday, Oct 4th
 [Assignment 3: Cache Simulator](assign/assign03.html) | Pair | MS1 due Wed, Oct 9th<br>MS2 due Wed, Oct 23rd<br>MS3 due Wed, Oct 30th
+[Assignment 4: Parallel Quicksort](assign/assign04.html) | Pair | Fri, Nov 8th
