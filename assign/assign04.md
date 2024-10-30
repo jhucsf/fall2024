@@ -3,7 +3,7 @@ layout: mathjax
 title: "Assignment 4: Parallel Quicksort"
 ---
 
-**Due**: Friday, Nov 8th by 11:59 pm
+**Due**: Friday, Nov 8th by 11 pm
 
 Assignment type: **Pair**, you may work with one partner
 
@@ -117,6 +117,12 @@ To complete the assignment, you will need to do the following:
    large file with varying parallel threshold values, and write a report
    explaining the observed running times
 
+Note that when the number of elements to sort is less than or equal
+to the parallel threshold, the elements are sorted using a call
+to the [qsort](https://www.man7.org/linux/man-pages/man3/qsort.3.html)
+function, which will sort the elements efficiently using a single
+CPU core.
+
 ### Task 1: open file, determine its size, map its data
 
 You will start by modifying the program to open the file, determine its
@@ -191,7 +197,7 @@ gcc -g -Wall -c gen_rand_data.c -o gen_rand_data.o
 gcc -o gen_rand_data gen_rand_data.o
 gcc -g -Wall -c parsort.c -o parsort.o
 gcc -o parsort parsort.o
-g++ -g -Wall -std=c++17 -DNDEBUG -DSOLUTION -c seqsort.cpp -o seqsort.o
+g++ -g -Wall -std=c++17 -c seqsort.cpp -o seqsort.o
 g++ -o seqsort seqsort.o
 $ ./gen_rand_data 1M test_data_1.bin
 Wrote 1048576 bytes to 'test_data_1.bin'
@@ -209,7 +215,7 @@ If the `diff` command does not produce any output, and exits with exit code 0
 both produced the result data, indicating that `parsort` worked correctly.
 Note that the parallel threshold value passed to `parsort` was 65536 in the
 example above, but it should work for any threshold value.
-Also note that the data create by the `gen_rand_data` program is "pseudo-random",
+Also note that the data created by the `gen_rand_data` program is "pseudo-random",
 meaning that it is deterministic, and in general will always generate the same
 sequence of bytes.
 
@@ -220,7 +226,7 @@ To allow the recursive sorting to make use of multiple CPU cores
 parallel threshold), you will use the `fork()` system call to create
 one child process for each recursive call.
 
-The [fork](https://man7.org/linux/man-pages/man2/fork.2.html) system
+Using the [fork](https://man7.org/linux/man-pages/man2/fork.2.html) system
 call is straightforward:
 
 ```c
