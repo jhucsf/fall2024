@@ -38,6 +38,7 @@ Gradescope.
 
 ## News
 
+* **Oct 30** — [Assignment 4](assign/assign04.html) is due on Friday, Nov 8th.
 * **Oct 23** — Exam 2 will take place in class on Monday, Nov 4th.
   Review materials are available on the [Resources](resources.html) page.
 * **Oct 3** — [Assignment 3](assign/assign03.html) has three milestones,
