@@ -7,6 +7,9 @@ title: "Assignment 4: Parallel Quicksort"
 
 Assignment type: **Pair**, you may work with one partner
 
+*Update 11/5*: improved code example for call to `waitpid` (in particular, there is
+a third argument specifying options, which should be 0)
+
 # Parallel Quicksort
 
 In this assignment, you will
@@ -263,7 +266,7 @@ system call:
 
 ```c
 int rc, wstatus;
-rc = waitpid( child_pid, &wstatus );
+rc = waitpid( child_pid, &wstatus, 0 );
 if ( rc < 0 ) {
   // waitpid failed
   // ...handle error...
@@ -275,6 +278,8 @@ if ( rc < 0 ) {
   } else if ( WEXITSTATUS( wstatus ) != 0 ) {
     // child exited with a non-zero exit code
     // ...handle child failure...
+  } else {
+    // child exited with exit code zero (it was successful)
   }
 }
 ```
@@ -318,7 +323,7 @@ quicksort_wait( &left );
 quicksort_wait( &right );
 
 left_success = quicksort_check_success( &left );
-right_success = quicksort_check_success( &right )
+right_success = quicksort_check_success( &right );
 ```
 
 In this code, the `quicksort_subproc` function is responsible for creating
