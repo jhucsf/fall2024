@@ -38,6 +38,9 @@ Gradescope.
 
 ## News
 
+* **Nov 8** — [Assignment 5](assign/assign05.html) has two milestones,
+  due Wednesday, Nov 20th and Friday, Dec 6th, respectively. Note that
+  late hours will *not* be allowed for MS2.
 * **Nov 5** — [Assignment 4](assign/assign04.html) has been updated to
   correct and improve the description of how to use `waitpid`.
 * **Oct 30** — [Assignment 4](assign/assign04.html) is due on Friday, Nov 8th.
