@@ -10,7 +10,7 @@ is worth 1/6 of the assignments grade for the course, the same as
 **Due:**
 
 * Milestone 1 due **Wednesday, Nov 20th** by 11 pm
-* Milestone 2 due **Friday, December 6th** by 11 pm (**Note**: late hours may **not** be used)
+* Milestone 2 due **Friday, December 6th** by 11 pm (**Note**: late hours may *not* be used)
 
 <div class='admonition danger'>
   <div class='title'>Warning!</div>
