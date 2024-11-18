@@ -38,6 +38,11 @@ Gradescope.
 
 ## News
 
+* **Nov 18** — Exam 3 will take place Tuesday, Dec 17th at 2 pm in Olin 305.
+  The exam format is similar to Exams 1 and 2, but you will have 90 minutes
+  to work on it. Review materials are available on the
+  [Resources](resources.html) page. Class on Friday, Dec 6th will
+  be used as a review session.
 * **Nov 8** — [Assignment 5](assign/assign05.html) has two milestones,
   due Wednesday, Nov 20th and Friday, Dec 6th, respectively. Note that
   late hours will *not* be allowed for MS2.
