@@ -38,7 +38,9 @@ Gradescope.
 
 ## News
 
-* **Nov 18** — Exam 3 will take place Tuesday, Dec 17th at 2 pm in Olin 305.
+* **Nov 22** — Room change for Exam 3 (2pm on Dec 17th): it will take place
+  in **Shaffer 3** (not Olin 305).
+* **Nov 18** — Exam 3 will take place Tuesday, Dec 17th at 2 pm in <strike>Olin 305</strike> Shaffer 3.
   The exam format is similar to Exams 1 and 2, but you will have 90 minutes
   to work on it. Review materials are available on the
   [Resources](resources.html) page. Class on Friday, Dec 6th will

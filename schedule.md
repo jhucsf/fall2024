@@ -70,4 +70,4 @@ Nov 25–29 | *Fall vacation, no class* |  |
 Dec 2 | [Concurrency with I/O multiplexing](lectures/lecture33-public.pdf), [iomux.zip (example code)](lectures/iomux.zip) | *CSAPP* 12.2 | 
 Dec 4 | Bonus topics (TBD) |  | 
 Dec 6 | Exam 3 review session |  | [A5](assign/assign05.html) MS2 due
-Dec 17 | **Exam 3**, 2pm, in Olin 305 |  | 
+Dec 17 | **Exam 3**, 2pm, in Shaffer 3 |  | 
