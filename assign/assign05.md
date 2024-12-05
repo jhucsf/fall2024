@@ -261,7 +261,7 @@ A FAILED response means that the server wasn't able to carry out the request,
 but the session can continue (i.e., the client can send additional requests.)
 A FAILED response is sent back if, as part of processing the request, an
 `OperationException` or `FailedTransaction` exception is thrown. (See
-the [Exceptions](#exceptions) section.)
+the [Exceptions](#handling-exceptions-in-the-server) section.)
 
 An ERROR response means that the server wasn't able to carry out the request,
 and the session has ended. The client should close the connect if it receives
