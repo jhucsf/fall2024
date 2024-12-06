@@ -38,6 +38,10 @@ Gradescope.
 
 ## News
 
+* **Dec 6** — To allow some extra time to finish, the due date for
+  [Assignment 5 MS2](assign/assign05.html) has been changed to Saturday,
+  Dec 7th at 11 pm. Please be aware that opportunities to get help
+  on Saturday will be very limited.
 * **Nov 22** — Room change for Exam 3 (2pm on Dec 17th): it will take place
   in **Shaffer 3** (not Olin 305).
 * **Nov 18** — Exam 3 will take place Tuesday, Dec 17th at 2 pm in <strike>Olin 305</strike> Shaffer 3.

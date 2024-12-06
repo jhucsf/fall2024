@@ -46,4 +46,4 @@ Assignment | Type | Due
 [Assignment 2: Image Processing](assign/assign02.html) | Pair | MS1 due Mon, Sep 23rd<br> MS2 due Fri, Sep 27th<br>MS3 due Friday, Oct 4th
 [Assignment 3: Cache Simulator](assign/assign03.html) | Pair | MS1 due Wed, Oct 9th<br>MS2 due Wed, Oct 23rd<br>MS3 due Wed, Oct 30th
 [Assignment 4: Parallel Quicksort](assign/assign04.html) | Pair | Fri, Nov 8th
-[Assignment 5: Key/Value Store](assign/assign05.html) | Pair | MS1 due Wed, Nov 20th<br>MS2 due Fri, Dec 6th
+[Assignment 5: Key/Value Store](assign/assign05.html) | Pair | MS1 due Wed, Nov 20th<br>MS2 due Sat, Dec 7th

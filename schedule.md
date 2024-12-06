@@ -69,5 +69,5 @@ Nov 22 | [Concurrency with processes](lectures/lecture32-public.pdf), [mp_webser
 Nov 25–29 | *Fall vacation, no class* |  | 
 Dec 2 | [Concurrency with I/O multiplexing](lectures/lecture33-public.pdf), [iomux.zip (example code)](lectures/iomux.zip) | *CSAPP* 12.2 | 
 Dec 4 | [Bonus topics](lectures/lecture34-public.pdf), [bonus.zip (example code)](lectures/bonus.zip) |  | 
-Dec 6 | Exam 3 review session |  | [A5](assign/assign05.html) MS2 due
+Dec 6 | Exam 3 review session |  | [A5](assign/assign05.html) MS2 due<br>Sat 12/7
 Dec 17 | **Exam 3**, 2pm, in Shaffer 3 |  | 
